@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Nabla&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Alumni+Sans+Pinstripe:ital@0;1&family=Foldit:wght@100..900&family=Funnel+Sans:ital,wght@0,300..800;1,300..800&family=Graduate&family=Orbitron:wght@400..900&family=Poiret+One&family=Sansation:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Winky+Rough:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Alumni+Sans+Pinstripe:ital@0;1&family=Foldit:wght@100..900&family=Funnel+Sans:ital,wght@0,300..800;1,300..800&family=Graduate&family=Orbitron:wght@400..900&family=Poiret+One&family=Sansation:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Sixtyfour+Convergence&family=Winky+Rough:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+    <title>StopWatch</title>
+    <link rel="stylesheet" text="text/css" href="style.css">
+</head>                                                                         
+<body>
+    <h1 class="time" style="margin-bottom: 0px;">StopWatch</h1>
+    <div class="cmptime">
+        <span1 id="span1">The Current Time</span1><br>  
+        <span id="hours">00:00:00</span>
+    </div>
+    <div class="margin">
+        <span class="StopWatch">A Stopwatch</span><br>
+        <div class="cmptime">
+        <span id="tHrs">00</span><b>:</b>
+        <span id="tmin">00</span><b>:</b>
+        <span id="tsec">00</span><b>:</b>
+        <span id="tms">000</span>   
+        </div>
+    </div>
+    <div class="margin1">
+        <button id="start" onclick="start()">Start</button>
+        <button id="stop" onclick="stop()">Stop</button>
+        <button id="reset" onclick="reset()">Reset</button>
+    </div>
+    <script>
+        const key =new Date();
+        let time=document.getElementById('hours');
+        setInterval(()=>{
+            let g=new Date();
+            time.innerHTML=g.toLocaleTimeString();
+        },1000);
+        let min=0,hours=0,sec=0,millis=0;
+        let int=null;
+        function start()
+        {
+            if(!int)
+            {
+                int=setInterval(()=>{
+                millis += 10;
+                if(millis>=1000){
+                    millis=0;
+                    sec++;
+                }
+                if(sec>=60){
+                    sec=0;
+                    min++;
+                } 
+                if(hours>=60){
+                    min=0;
+                    hours++;
+                }
+                document.getElementById('tms').innerText=millis;
+                document.getElementById('tsec').innerText=sec;
+                document.getElementById('tmin').innerText=min;
+                document.getElementById('tHrs').innerText=hrs;
+                },10);
+            }
+        }
+        function stop(){
+            clearInterval(int);
+            int=null;
+        }
+        function reset(){
+            stop();
+                document.getElementById('tms').innerText="000";
+                document.getElementById('tsec').innerText="00";
+                document.getElementById('tmin').innerText="00";
+                document.getElementById('tHrs').innerText="00";
+        }
+    </script>
+</body>
+</html>
