@@ -39,9 +39,6 @@ body{
         box-shadow: 2px 6px 16px rgb(209, 141, 223);
         transition: transform 1.5s ease;
     }
-    button:hover{
-        transform:translateY(-5px);
-    }
     b{
         font-size: 50px;
     }
